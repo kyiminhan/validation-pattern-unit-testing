@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.kyiminhan.web.model.ChangePasswordModel" project="validation-model-pattern" 
+    file="/validation-model-pattern/src/main/java/com/kyiminhan/web/model/ChangePasswordModel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="404" width="270" x="354" y="65"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.kyiminhan.web.model.UserRegistrationModel.UserRegistrationModelBuilder" 
+    project="validation-model-pattern" 
+    file="/validation-model-pattern/src/main/java/com/kyiminhan/web/model/UserRegistrationModel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="398" width="321" x="690" y="615"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.kyiminhan.entity.User.UserBuilder" project="validation-model-pattern" 
+    file="/validation-model-pattern/src/main/java/com/kyiminhan/entity/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="397" width="244" x="48" y="616"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.kyiminhan.web.model.ChangePasswordModel.ChangePasswordModelBuilder" 
+    project="validation-model-pattern" 
+    file="/validation-model-pattern/src/main/java/com/kyiminhan/web/model/ChangePasswordModel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="397" width="306" x="336" y="615"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.kyiminhan.entity.User" project="validation-model-pattern" 
+    file="/validation-model-pattern/src/main/java/com/kyiminhan/entity/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="404" width="261" x="40" y="63"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.kyiminhan.web.model.UserRegistrationModel" project="validation-model-pattern" 
+    file="/validation-model-pattern/src/main/java/com/kyiminhan/web/model/UserRegistrationModel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="850" y="268"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <nesting id="7">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <nesting id="8">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <nesting id="9">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
