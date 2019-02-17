@@ -12,15 +12,14 @@ public class ChangePasswordModelValidator extends AbstractModelValidator<ChangeP
 
 	@Override
 	public Map<?, ?> validate(ChangePasswordModel m) {
-		List<String> errors = doValidate(m);
+		List<String> errors = this.doValidate(m);
 		if (!errors.isEmpty()) {
 			Map<String, List<String>> map = new HashMap<>();
-			map.put(Constant.get().VALIDATE_ERRORS, errors);
+			map.put(Constant.VALIDATE_ERRORS, errors);
 			return map;
 		}
 		Map<String, User> map = new HashMap<>();
-		map.put(Constant.get().VALIDATE_SUCCESS,
-				User.builder().email(m.getEmail()).password(m.getNewPassword()).build());
+		map.put(Constant.VALIDATE_SUCCESS, User.builder().email(m.getEmail()).password(m.getNewPassword()).build());
 		return map;
 	}
 }

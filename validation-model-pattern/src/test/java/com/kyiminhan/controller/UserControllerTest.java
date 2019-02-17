@@ -1,10 +1,8 @@
 package com.kyiminhan.controller;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
 import java.util.Date;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.kyiminhan.common.Constant;
@@ -24,53 +22,53 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserControllerTest {
 	BaseDao<User> baseDao = new UserDaoImpl();
-	BaseService<User> baseService = new UserServiceImpl(baseDao);
+	BaseService<User> baseService = new UserServiceImpl(this.baseDao);
 
-//	for changePasswordModel 
+//	for changePasswordModel
 	ModelValidator<UserRegistrationModel, User> uValidator = new UserRegistrationModelValidator();
 	ModelFactory<UserRegistrationModel, User> urFactory = new UserRegistrationModelFactory();
-	AbstractBaseController<UserRegistrationModel, User> urController = new UserController(baseService, uValidator,
-			urFactory);
+	AbstractBaseController<UserRegistrationModel, User> urController = new UserController(this.baseService,
+			this.uValidator, this.urFactory);
 
 	@Test
 	public void testSave_01() {
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------------------");
-		String actualResult = urController.save(UserRegistrationModel.builder().build());
-		log.info(actualResult);
+		String actualResult = this.urController.save(UserRegistrationModel.builder().build());
+		UserControllerTest.log.info(actualResult);
 		System.out.println("--------------------------------------------------------------------------------");
-		assertEquals(Constant.get().RESULT_ERROR, actualResult);
+		Assert.assertEquals(Constant.RESULT_ERROR, actualResult);
 	}
 
 	@Test
 	public void testSave_02() {
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------------------");
-		String actualResult = urController.save(UserRegistrationModel.builder().id(Long.valueOf(1199))
+		String actualResult = this.urController.save(UserRegistrationModel.builder().id(Long.valueOf(1199))
 				.firstName("firstName").lastName("lastName").email("email@gmail.com").password("password")
 				.phone("000000000").dateOfBirth(new Date()).build());
-		log.info(actualResult);
+		UserControllerTest.log.info(actualResult);
 		System.out.println("--------------------------------------------------------------------------------");
-		assertEquals(Constant.get().RESULT_SUCCESS, actualResult);
+		Assert.assertEquals(Constant.RESULT_SUCCESS, actualResult);
 	}
 
 	@Test
 	public void testFind_01() {
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------------------");
-		UserRegistrationModel model = urController.find(1L);
+		UserRegistrationModel model = this.urController.find(1L);
 		System.out.println(model);
 		System.out.println("--------------------------------------------------------------------------------");
-		assertNotEquals(null, model);
+		Assert.assertNotEquals(null, model);
 	}
 
 	@Test
 	public void testFind_02() {
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------------------");
-		UserRegistrationModel model = urController.find(11111L);
+		UserRegistrationModel model = this.urController.find(11111L);
 		System.out.println(model);
 		System.out.println("--------------------------------------------------------------------------------");
-		assertEquals(null, model);
+		Assert.assertEquals(null, model);
 	}
 }

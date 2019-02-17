@@ -20,15 +20,16 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 		String className = this.getClass().getName();
 		String methodName = new Throwable().getStackTrace()[0].getMethodName();
 		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
-		String message = Constant.get().SUCCESSFULLY_FIND + msgPath;
+		String message = Constant.SUCCESSFULLY_FIND + msgPath;
 
 		User user = null;
-		log.info(Constant.get().START + msgPath);
-		log.info(message);
-		log.info(Constant.get().END + msgPath);
-		for (User usr : getUserList()) {
-			if (id == usr.getId())
+		UserDaoImpl.log.info(Constant.START + msgPath);
+		UserDaoImpl.log.info(message);
+		UserDaoImpl.log.info(Constant.END + msgPath);
+		for (User usr : this.getUserList()) {
+			if (id == usr.getId()) {
 				user = usr;
+			}
 		}
 		return user;
 	}

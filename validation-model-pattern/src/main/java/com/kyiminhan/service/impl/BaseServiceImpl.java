@@ -25,12 +25,12 @@ public abstract class BaseServiceImpl<E extends Serializable> implements BaseSer
 		String className = this.getClass().getName();
 		String methodName = new Throwable().getStackTrace()[0].getMethodName();
 		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
-		String message = Constant.get().SUCCESSFULLY_SAVE + msgPath;
+		String message = Constant.SUCCESSFULLY_SAVE + msgPath;
 
-		log.info(Constant.get().START + msgPath);
+		BaseServiceImpl.log.info(Constant.START + msgPath);
 		this.baseDao.save(e);
-		log.info(message);
-		log.info(Constant.get().END + msgPath);
+		BaseServiceImpl.log.info(message);
+		BaseServiceImpl.log.info(Constant.END + msgPath);
 	}
 
 	@Override
@@ -38,11 +38,11 @@ public abstract class BaseServiceImpl<E extends Serializable> implements BaseSer
 		String className = this.getClass().getName();
 		String methodName = new Throwable().getStackTrace()[0].getMethodName();
 		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
-		String message = Constant.get().SUCCESSFULLY_FIND + msgPath;
+		String message = Constant.SUCCESSFULLY_FIND + msgPath;
 
-		log.info(Constant.get().START + msgPath);
-		log.info(message);
-		log.info(Constant.get().END + msgPath);
+		BaseServiceImpl.log.info(Constant.START + msgPath);
+		BaseServiceImpl.log.info(message);
+		BaseServiceImpl.log.info(Constant.END + msgPath);
 		return this.baseDao.findById(id);
 	}
 }

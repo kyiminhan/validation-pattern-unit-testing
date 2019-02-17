@@ -35,20 +35,20 @@ public abstract class AbstractBaseController<M extends Serializable, E extends S
 		String methodName = new Throwable().getStackTrace()[0].getMethodName();
 		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
 
-		log.info(Constant.get().START + msgPath);
+		AbstractBaseController.log.info(Constant.START + msgPath);
 
 		Map<?, ?> map = this.validator.validate(m);
-		if (map.containsKey(Constant.get().VALIDATE_ERRORS)) {
-			List<String> errorMessages = (List<String>) map.get(Constant.get().VALIDATE_ERRORS);
-			errorMessages.forEach(msg -> log.info(msg));
-			log.info(Constant.get().VALIDATE_ERRORS);
-			log.info(Constant.get().END + msgPath);
-			return Constant.get().RESULT_ERROR;
+		if (map.containsKey(Constant.VALIDATE_ERRORS)) {
+			List<String> errorMessages = (List<String>) map.get(Constant.VALIDATE_ERRORS);
+			errorMessages.forEach(msg -> AbstractBaseController.log.info(msg));
+			AbstractBaseController.log.info(Constant.VALIDATE_ERRORS);
+			AbstractBaseController.log.info(Constant.END + msgPath);
+			return Constant.RESULT_ERROR;
 		}
-		this.baseService.save((E) map.get(Constant.get().VALIDATE_SUCCESS));
-		log.info(Constant.get().SUCCESSFULLY_SAVE + msgPath);
-		log.info(Constant.get().END + msgPath);
-		return Constant.get().RESULT_SUCCESS;
+		this.baseService.save((E) map.get(Constant.VALIDATE_SUCCESS));
+		AbstractBaseController.log.info(Constant.SUCCESSFULLY_SAVE + msgPath);
+		AbstractBaseController.log.info(Constant.END + msgPath);
+		return Constant.RESULT_SUCCESS;
 	}
 
 	@Override
@@ -56,11 +56,11 @@ public abstract class AbstractBaseController<M extends Serializable, E extends S
 		String className = this.getClass().getName();
 		String methodName = new Throwable().getStackTrace()[0].getMethodName();
 		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
-		String message = Constant.get().SUCCESSFULLY_FIND + msgPath;
+		String message = Constant.SUCCESSFULLY_FIND + msgPath;
 
-		log.info(Constant.get().START + msgPath);
-		log.info(message);
-		log.info(Constant.get().END + msgPath);
+		AbstractBaseController.log.info(Constant.START + msgPath);
+		AbstractBaseController.log.info(message);
+		AbstractBaseController.log.info(Constant.END + msgPath);
 		return this.factory.build(this.baseService.findById(id));
 	}
 }

@@ -1,31 +1,39 @@
 package com.kyiminhan.common;
 
-public class Constant {
+/**
+ * The Interface Constant.</BR>
+ *
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Feb 18, 2019 </BR>
+ *        validation-model-pattern system </BR>
+ *        com.kyiminhan.common </BR>
+ *        Constant.java </BR>
+ */
+public interface Constant {
 
-	private static Constant SINGLE_INSTANCE = null;
+	/** The start. */
+	String START = "START";
 
-	private Constant() {
-	}
+	/** The end. */
+	String END = "END";
 
-	public static Constant get() {
-		if (null == SINGLE_INSTANCE) {
-			synchronized (Constant.class) {
-				SINGLE_INSTANCE = new Constant();
-			}
-		}
-		return SINGLE_INSTANCE;
-	}
+	/** The validate errors. */
+	String VALIDATE_ERRORS = "validateError";
 
-	public final String START = "START";
-	public final String END = "END";
+	/** The validate success. */
+	String VALIDATE_SUCCESS = "validateSuccess";
 
-	public final String VALIDATE_ERRORS = "validateError";
-	public final String VALIDATE_SUCCESS = "validateSuccess";
+	/** The successfully save. */
+	String SUCCESSFULLY_SAVE = "Successfully Save.";
 
-	public final String SUCCESSFULLY_SAVE = "Successfully Save.";
-	public final String SUCCESSFULLY_FIND = "Successfully find.";
-	
-	public final String RESULT_ERROR = "ERROR";
-	public final String RESULT_SUCCESS = "SUCCESS";
+	/** The successfully find. */
+	String SUCCESSFULLY_FIND = "Successfully find.";
+
+	/** The result error. */
+	String RESULT_ERROR = "ERROR";
+
+	/** The result success. */
+	String RESULT_SUCCESS = "SUCCESS";
 
 }

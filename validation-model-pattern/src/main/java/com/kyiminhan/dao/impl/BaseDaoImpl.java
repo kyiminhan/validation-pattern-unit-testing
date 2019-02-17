@@ -17,11 +17,11 @@ public abstract class BaseDaoImpl<E extends Serializable> implements BaseDao<E> 
 		String className = this.getClass().getName();
 		String methodName = new Throwable().getStackTrace()[0].getMethodName();
 		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
-		String message = Constant.get().SUCCESSFULLY_SAVE + msgPath;
+		String message = Constant.SUCCESSFULLY_SAVE + msgPath;
 
-		log.info(Constant.get().START + msgPath);
-		log.info(message);
-		log.info(Constant.get().END + msgPath);
+		BaseDaoImpl.log.info(Constant.START + msgPath);
+		BaseDaoImpl.log.info(message);
+		BaseDaoImpl.log.info(Constant.END + msgPath);
 	}
 
 	@Override
