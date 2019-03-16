@@ -12,15 +12,29 @@ import com.kyiminhan.entity.UserTest;
 import com.kyiminhan.model.ChangePasswordModelTest;
 import com.kyiminhan.model.UserRegistrationModelTest;
 
+/**
+ * The Class AppTest.</BR>
+ *
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @since Mar 17, 2019 </BR>
+ *        validation-model-pattern system </BR>
+ *        com.kyiminhan </BR>
+ *        AppTest.java </BR>
+ */
 @RunWith(Suite.class)
 @SuiteClasses({ ChangePasswordControllerTest.class, ChangePasswordModelTest.class, UserControllerTest.class,
 		UserRegistrationModelTest.class, UserTest.class })
 public class AppTest {
 
-	public static void main(String[] args) {
-		JUnitCore jUnitCore = new JUnitCore();
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
+	public static void main(final String[] args) {
+		final JUnitCore jUnitCore = new JUnitCore();
 		jUnitCore.addListener(new TextListener(System.out));
 		jUnitCore.run(AppTest.class);
 	}
-
 }
