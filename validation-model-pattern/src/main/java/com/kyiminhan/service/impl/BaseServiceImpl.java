@@ -9,23 +9,48 @@ import com.kyiminhan.service.BaseService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The Class BaseServiceImpl.</BR>
+ *
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @param <E> the element type
+ * @since Mar 17, 2019 </BR>
+ *        validation-model-pattern system </BR>
+ *        com.kyiminhan.service.impl </BR>
+ *        BaseServiceImpl.java </BR>
+ */
+
 @Slf4j
 public abstract class BaseServiceImpl<E extends Serializable> implements BaseService<E> {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	private BaseDao<E> baseDao;
 
-	public BaseServiceImpl(BaseDao<E> baseDao) {
+	/** The base dao. */
+	private final BaseDao<E> baseDao;
+
+	/**
+	 * Instantiates a new base service impl.
+	 *
+	 * @param baseDao the base dao
+	 */
+	public BaseServiceImpl(final BaseDao<E> baseDao) {
 		super();
 		this.baseDao = baseDao;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.kyiminhan.service.BaseService#save(java.io.Serializable)
+	 */
 	@Override
-	public void save(E e) {
-		String className = this.getClass().getName();
-		String methodName = new Throwable().getStackTrace()[0].getMethodName();
-		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
-		String message = Constant.SUCCESSFULLY_SAVE + msgPath;
+	public void save(final E e) {
+		final String className = this.getClass().getName();
+		final String methodName = new Throwable().getStackTrace()[0].getMethodName();
+		final String msgPath = "\t[" + methodName + "() method in the " + className + "]";
+		final String message = Constant.SUCCESSFULLY_SAVE + msgPath;
 
 		BaseServiceImpl.log.info(Constant.START + msgPath);
 		this.baseDao.save(e);
@@ -33,12 +58,17 @@ public abstract class BaseServiceImpl<E extends Serializable> implements BaseSer
 		BaseServiceImpl.log.info(Constant.END + msgPath);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.kyiminhan.service.BaseService#findById(java.lang.Long)
+	 */
 	@Override
-	public E findById(Long id) {
-		String className = this.getClass().getName();
-		String methodName = new Throwable().getStackTrace()[0].getMethodName();
-		String msgPath = "\t[" + methodName + "() method in the " + className + "]";
-		String message = Constant.SUCCESSFULLY_FIND + msgPath;
+	public E findById(final Long id) {
+		final String className = this.getClass().getName();
+		final String methodName = new Throwable().getStackTrace()[0].getMethodName();
+		final String msgPath = "\t[" + methodName + "() method in the " + className + "]";
+		final String message = Constant.SUCCESSFULLY_FIND + msgPath;
 
 		BaseServiceImpl.log.info(Constant.START + msgPath);
 		BaseServiceImpl.log.info(message);

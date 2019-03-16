@@ -17,16 +17,35 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+/**
+ * The Class AbstractModelValidator.</BR>
+ *
+ * @author KYIMINHAN </BR>
+ * @version 1.0 </BR>
+ * @param <M> the generic type
+ * @param <E> the element type
+ * @since Mar 17, 2019 </BR>
+ *        validation-model-pattern system </BR>
+ *        com.kyiminhan.validtor </BR>
+ *        AbstractModelValidator.java </BR>
+ */
 public abstract class AbstractModelValidator<M extends Serializable, E extends Serializable>
 		implements ModelValidator<M, E> {
-	protected List<String> doValidate(M m) {
 
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		Validator validator = factory.getValidator();
-		Set<ConstraintViolation<M>> constraintViolations = validator.validate(m);
+	/**
+	 * Do validate.
+	 *
+	 * @param m the m
+	 * @return List
+	 */
+	protected List<String> doValidate(final M m) {
 
-		Map<String, String> map = new HashMap<>();
-		getObjectFields(m).forEach(f -> {
+		final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		final Validator validator = factory.getValidator();
+		final Set<ConstraintViolation<M>> constraintViolations = validator.validate(m);
+
+		final Map<String, String> map = new HashMap<>();
+		this.getObjectFields(m).forEach(f -> {
 			constraintViolations.forEach(cv -> {
 				if (f.equals(cv.getPropertyPath().toString())) {
 					map.put(f, cv.getMessage());
@@ -36,13 +55,19 @@ public abstract class AbstractModelValidator<M extends Serializable, E extends S
 			});
 		});
 
-		return getMessage(map);
+		return this.getMessage(map);
 	}
 
-	private Set<String> getObjectFields(M m) {
+	/**
+	 * Gets the object fields.
+	 *
+	 * @param m the m
+	 * @return the object fields
+	 */
+	private Set<String> getObjectFields(final M m) {
 
-		Field[] fields = m.getClass().getDeclaredFields();
-		Set<String> list = new HashSet<>();
+		final Field[] fields = m.getClass().getDeclaredFields();
+		final Set<String> list = new HashSet<>();
 		Arrays.asList(fields).forEach(field -> {
 			field.setAccessible(true);
 			list.add(field.getName());
@@ -50,17 +75,28 @@ public abstract class AbstractModelValidator<M extends Serializable, E extends S
 		return list;
 	}
 
-	private List<String> getMessage(Map<String, String> map) {
-		List<String> list = new ArrayList<>();
-		ResourceBundle bundle = ResourceBundle.getBundle("messages");
+	/**
+	 * Gets the message.
+	 *
+	 * @param map the map
+	 * @return the message
+	 */
+	private List<String> getMessage(final Map<String, String> map) {
+		final List<String> list = new ArrayList<>();
+		final ResourceBundle bundle = ResourceBundle.getBundle("messages");
 		map.forEach((k, v) -> {
-			String message = bundle.getString(v);
-			String param = bundle.getString(k);
+			final String message = bundle.getString(v);
+			final String param = bundle.getString(k);
 			list.add(MessageFormat.format(message, param));
 		});
 		return list;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.kyiminhan.validtor.ModelValidator#validate(java.io.Serializable)
+	 */
 	@Override
 	abstract public Map<?, ?> validate(M m);
 }
